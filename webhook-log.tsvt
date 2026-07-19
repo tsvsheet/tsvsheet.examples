@@ -1,0 +1,9 @@
+# Webhook log — each Event cell is raw JSON; formulas parse fields straight out of it.
+# jsonget maps JSON scalars into cell values, jsontype/jsonlen inspect shape, jsonset transforms — pure parsing, no I/O.
+Event	Type	User	Attempts	Payload kind
+{"type":"push","user":"ada","attempts":1,"payload":{"ref":"main"}}	=jsonget(A2, "type")	=jsonget(A2, "user")	=jsonget(A2, "attempts")	=jsontype(A2, "payload")
+{"type":"deploy","user":"lin","attempts":3,"payload":["web","api"]}	=jsonget(A3, "type")	=jsonget(A3, "user")	=jsonget(A3, "attempts")	=jsontype(A3, "payload")
+{"type":"ping","user":"bot","attempts":1,"payload":null}	=jsonget(A4, "type")	=jsonget(A4, "user")	=jsonget(A4, "attempts")	=jsontype(A4, "payload")
+Total attempts			=sum(D2:D4)
+Deploy targets	=jsonlen(A3, "payload")	first	=jsonget(A3, "payload[0]")
+Tagged as seen	=jsonset(A4, "seen", TRUE)

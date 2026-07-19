@@ -1,0 +1,10 @@
+# Tamper-evident ledger — the Digest cell fingerprints the data; the Signed cell proves it.
+# digest/verify read the range's canonical serialization: computed cells TAB-joined, LF-terminated rows.
+# The Ed25519 signature was produced offline (signing is a CLI operation, never a formula); edit any signed cell and Signed flips to FALSE.
+Date	Item	Amount
+2026-07-01	Domain renewal	12.99
+2026-07-05	VPS (July)	24
+2026-07-12	Backup storage	6.5
+Total		=sum(C2:C4)
+Digest		=digest(A2:C4)
+Signed		=verify("f565a067688c2374fb8bebfb94956de02af440417c33a19208e3f1e4fa47332e3ed317d911fa53f9efe8b2b311ae91fa2511026fdc1426420ec0d9f411db2e0a", "19f07a6955aeae4cee23d57b692e7683dbe733dc05a0d02b513117b497daebfd", A2:C4)

@@ -141,6 +141,39 @@ pv	=round(pv(0.05/12, 60, -100), 2)
 npv	=round(npv(0.1, 100, 200, 300), 2)
 sln	=sln(10000, 1000, 5)
 
+--- JSON  (pure parsing of the doc cell; no I/O) ---
+json doc ->	{"name":"Ada","tags":["math","code"],"active":true,"score":99.5}
+jsonget	=jsonget(B145, "name")
+jsonget path	=jsonget(B145, "tags[1]")
+jsontype	=jsontype(B145, "tags")
+jsonlen	=jsonlen(B145, "tags")
+jsonset	=jsonset("{}", "greeting", "hi")
+--- URL & EMAIL ---
+urlscheme	=urlscheme("https://tsvsheet.com/docs?lang=en#intro")
+urlhost	=urlhost("https://tsvsheet.com/docs?lang=en#intro")
+urlpath	=urlpath("https://tsvsheet.com/docs?lang=en#intro")
+urlquery	=urlquery("https://tsvsheet.com/docs?lang=en#intro", "lang")
+urlfragment	=urlfragment("https://tsvsheet.com/docs?lang=en#intro")
+urlencode	=urlencode("hello world")
+urldecode	=urldecode("hello%20world")
+emailvalid	=emailvalid("ada@example.org")
+emailuser	=emailuser("ada@example.org")
+emaildomain	=emaildomain("ada@example.org")
+--- CRYPTO  (digest/verify read a range's canonical TSV serialization) ---
+sha256	=sha256("abc")
+sha512	=left(sha512("abc"), 32)
+crc32	=crc32("abc")
+hex	=hex("abc")
+unhex	=unhex("616263")
+base64	=base64("abc")
+unbase64	=unbase64("YWJj")
+hmac	=hmac("key", "abc")
+digest	=digest(D2:D6)
+digest crc32	=digest(D2:D6, "crc32")
+verify sig ->	3cd9b51e61c53dbec237433a37b7f65becf08ebbb3d6e6c45484d070f01ffc9b904f0dcdfbef10a952a29b5e1139b29a00c748cefdab6e3b8ff061cdac9ee00b
+verify pub ->	19f07a6955aeae4cee23d57b692e7683dbe733dc05a0d02b513117b497daebfd
+verify	=verify(B173, B174, D2:D6)
+
 --- ARRAY COMPOSITION (an inner array result is consumed like a range; both spellings are one formula) ---
 sum(sort(...))	=sum(sort(D2:D6))
 count(unique(...))	=count(unique(D2:D6))
@@ -149,3 +182,13 @@ index(sort(...), 2)	=index(sort(D2:D6), 2)
 --- ARRAY (dynamic arrays; each result SPILLS down its column) ---
 function ->	sequence(6,1)	transpose(D8:G8)	unique(D2:D6)	sort(D2:D6)	filter(D2:D6,H2:H6)	flatten(E2:F5)
 result ->	=sequence(6,1)	=transpose(D8:G8)	=unique(D2:D6)	=sort(D2:D6)	=filter(D2:D6,H2:H6)	=flatten(E2:F5)
+
+
+
+
+
+
+
+--- TIMESERIES & JSONKEYS (each result SPILLS down its column) ---
+function ->	movingavg(D2:D6,2)	ema(D2:D6,3)	rollingmin(D2:D6,2)	rollingmax(D2:D6,2)	cumsum(D2:D6)	jsonkeys(json doc)
+result ->	=movingavg(D2:D6, 2)	=ema(D2:D6, 3)	=rollingmin(D2:D6, 2)	=rollingmax(D2:D6, 2)	=cumsum(D2:D6)	=jsonkeys(B145)

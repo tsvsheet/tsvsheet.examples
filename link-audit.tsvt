@@ -1,0 +1,9 @@
+# Link & contact audit — URLs and addresses parsed by plain formulas: hosts, paths, query params, validity.
+URL	Host	Path	utm_source
+https://tsvsheet.com/functions/?utm_source=readme#crypto	=urlhost(A2)	=urlpath(A2)	=urlquery(A2, "utm_source")
+https://github.com/tsvsheet/tsvsheet.examples?utm_source=site	=urlhost(A3)	=urlpath(A3)	=urlquery(A3, "utm_source")
+https://tsv.sh/#install	=urlhost(A4)	=urlpath(A4)	=ifna(urlquery(A4, "utm_source"), "-")
+Contact	Valid	User	Domain
+ada@example.org	=emailvalid(A6)	=emailuser(A6)	=emaildomain(A6)
+not-an-address	=emailvalid(A7)	=iferror(emailuser(A7), "?")	=iferror(emaildomain(A7), "?")
+Encoded	=urlencode("release notes v2")	Decoded	=urldecode("release%20notes%20v2")

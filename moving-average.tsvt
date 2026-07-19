@@ -1,0 +1,10 @@
+# Daily downloads with windowed formulas — each result column SPILLS down from its top cell.
+# movingavg/rollingmax need a full window (#N/A until then); cumsum runs the total from day one.
+Day	Downloads	3-day avg	3-day max	Running total
+Mon	120	=movingavg(B2:B8, 3)	=rollingmax(B2:B8, 3)	=cumsum(B2:B8)
+Tue	135
+Wed	150
+Thu	144
+Fri	180
+Sat	96
+Sun	111
