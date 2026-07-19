@@ -1,0 +1,7 @@
+Month	Revenue	Chart
+Jan	1200	=rept("█", round(B2/max($B$2:$B$7)*20, 0))
+Feb	1350	=rept("█", round(B3/max($B$2:$B$7)*20, 0))
+Mar	1280	=rept("█", round(B4/max($B$2:$B$7)*20, 0))
+Apr	1510	=rept("█", round(B5/max($B$2:$B$7)*20, 0))
+May	1620	=rept("█", round(B6/max($B$2:$B$7)*20, 0))
+Jun	1810	=rept("█", round(B7/max($B$2:$B$7)*20, 0))

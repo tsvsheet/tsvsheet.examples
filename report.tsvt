@@ -1,0 +1,6 @@
+Quarter	Revenue	Growth %
+Q1	120	
+Q2	180	=round((B3-B2)/B2*100, 1)
+Q3	150	=round((B4-B3)/B3*100, 1)
+Q4	210	=round((B5-B4)/B4*100, 1)
+Chart	=sheet("bar-chart.tsvt", A2, B2, A3, B3, A4, B4, A5, B5)	

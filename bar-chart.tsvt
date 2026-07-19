@@ -1,0 +1,7 @@
+# bar-chart.tsvt — a chart as a spreadsheet-function: 4 (label, value) pairs in, one SVG string out.
+label	value	h	svg fragment
+=input(1)	=input(2)	=round(B2/max($B$2:$B$5)*100, 0)	=concat("<rect x='20' y='", 120-C2, "' width='60' height='", C2, "' fill='#4C78A8'/><text x='50' y='135' text-anchor='middle' font-size='11'>", A2, "</text><text x='50' y='", 114-C2, "' text-anchor='middle' font-size='10' fill='#555'>", B2, "</text>")
+=input(3)	=input(4)	=round(B3/max($B$2:$B$5)*100, 0)	=concat("<rect x='95' y='", 120-C3, "' width='60' height='", C3, "' fill='#4C78A8'/><text x='125' y='135' text-anchor='middle' font-size='11'>", A3, "</text><text x='125' y='", 114-C3, "' text-anchor='middle' font-size='10' fill='#555'>", B3, "</text>")
+=input(5)	=input(6)	=round(B4/max($B$2:$B$5)*100, 0)	=concat("<rect x='170' y='", 120-C4, "' width='60' height='", C4, "' fill='#4C78A8'/><text x='200' y='135' text-anchor='middle' font-size='11'>", A4, "</text><text x='200' y='", 114-C4, "' text-anchor='middle' font-size='10' fill='#555'>", B4, "</text>")
+=input(7)	=input(8)	=round(B5/max($B$2:$B$5)*100, 0)	=concat("<rect x='245' y='", 120-C5, "' width='60' height='", C5, "' fill='#4C78A8'/><text x='275' y='135' text-anchor='middle' font-size='11'>", A5, "</text><text x='275' y='", 114-C5, "' text-anchor='middle' font-size='10' fill='#555'>", B5, "</text>")
+=output(concat("<svg xmlns='http://www.w3.org/2000/svg' width='325' height='145' viewBox='0 0 325 145' font-family='Helvetica'>", D2, D3, D4, D5, "<line x1='15' y1='120' x2='310' y2='120' stroke='#999'/></svg>"))
