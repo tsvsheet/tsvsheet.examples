@@ -1,8 +1,8 @@
 # cat.tsvt — a blinking cat drawn in cells. The eyes close for a beat every few
 # seconds: isnow("::+[4]") holds on seconds divisible by 4, so the eye glyph
-# flips; volatile() marks the cell live, so `tsv serve` (or the playground)
-# redraws it on the clock. Open one with `tsv serve cat.tsvt` and watch it blink.
+# flips; the bare `| volatile` stage marks the cell live, so `tsv serve` (or the
+# playground) redraws it on the clock. Run `tsv serve cat.tsvt` and watch it blink.
    /\_/\
-=concat("  ( ", if(isnow("::+[4]"), "-   -", "◉   ◉"), " )") | volatile()
+=concat("  ( ", if(isnow("::+[4]"), "-   -", "◉   ◉"), " )") | volatile
    )  ^  (
-=if(isnow("::+[4]"), "  ( =^..^= ) ~ *blink*", "  ( =^..^= ) ~ meow") | volatile()
+=if(isnow("::+[4]"), "  ( =^..^= ) ~ *blink*", "  ( =^..^= ) ~ meow") | volatile

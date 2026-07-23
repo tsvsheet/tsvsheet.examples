@@ -1,87 +1,87 @@
-ISNOW PATTERN SHOWCASE	ISNOW("pat") is TRUE when the isnow pattern holds at the current clock; each cell is piped through | volatile() so the column stays live (each pattern lends its own refresh cadence). Patterns are verbatim from the tsvsheet/isnow conformance corpus
+ISNOW PATTERN SHOWCASE	ISNOW("pat") is TRUE when the isnow pattern holds at the current clock; each cell is piped through | volatile so the column stays live (each pattern lends its own refresh cadence). Patterns are verbatim from the tsvsheet/isnow conformance corpus
 Pattern	Holds now?	Means
 --- SYMBOLS: WEEKDAY NAMES (case-insensitive, minimal-unique) ---
-M noon	=isnow("M noon") | volatile()	Monday at 12:00:00
-Tu noon	=isnow("Tu noon") | volatile()	Tuesday at noon
-Th noon	=isnow("Th noon") | volatile()	Thursday at noon
-Su noon	=isnow("Su noon") | volatile()	Sunday at noon
-monday noon	=isnow("monday noon") | volatile()	case-insensitive: same as "M noon"
-Wednesday noon	=isnow("Wednesday noon") | volatile()	full weekday name also resolves
-MWF noon	=isnow("MWF noon") | volatile()	the run Mon/Wed/Fri, at noon
-SS noon	=isnow("SS noon") | volatile()	the weekend run (Sat+Sun), at noon
-TT noon	=isnow("TT noon") | volatile()	the run Tue+Thu, at noon
-M	=isnow("M") | volatile()	Monday — every minute (bare weekday leaves time wild)
-Sa	=isnow("Sa") | volatile()	Saturday — every minute
-Su	=isnow("Su") | volatile()	Sunday — every minute
-*/*/* 2 12:00	=isnow("*/*/* 2 12:00") | volatile()	numeric weekday 2 = Monday (Sun=1); numeric form needs all three groups
-*/*/* 7 12:00	=isnow("*/*/* 7 12:00") | volatile()	numeric weekday 7 = Saturday, at 12:00
+M noon	=isnow("M noon") | volatile	Monday at 12:00:00
+Tu noon	=isnow("Tu noon") | volatile	Tuesday at noon
+Th noon	=isnow("Th noon") | volatile	Thursday at noon
+Su noon	=isnow("Su noon") | volatile	Sunday at noon
+monday noon	=isnow("monday noon") | volatile	case-insensitive: same as "M noon"
+Wednesday noon	=isnow("Wednesday noon") | volatile	full weekday name also resolves
+MWF noon	=isnow("MWF noon") | volatile	the run Mon/Wed/Fri, at noon
+SS noon	=isnow("SS noon") | volatile	the weekend run (Sat+Sun), at noon
+TT noon	=isnow("TT noon") | volatile	the run Tue+Thu, at noon
+M	=isnow("M") | volatile	Monday — every minute (bare weekday leaves time wild)
+Sa	=isnow("Sa") | volatile	Saturday — every minute
+Su	=isnow("Su") | volatile	Sunday — every minute
+*/*/* 2 12:00	=isnow("*/*/* 2 12:00") | volatile	numeric weekday 2 = Monday (Sun=1); numeric form needs all three groups
+*/*/* 7 12:00	=isnow("*/*/* 7 12:00") | volatile	numeric weekday 7 = Saturday, at 12:00
 --- SYMBOLS: TIME NAMES ---
-noon	=isnow("noon") | volatile()	12:00:00
-midnight	=isnow("midnight") | volatile()	00:00:00
-midday	=isnow("midday") | volatile()	synonym for noon
-mn	=isnow("mn") | volatile()	abbreviation for midnight
-md	=isnow("md") | volatile()	abbreviation for midday
-n	=isnow("n") | volatile()	unique prefix of the three time words: noon
+noon	=isnow("noon") | volatile	12:00:00
+midnight	=isnow("midnight") | volatile	00:00:00
+midday	=isnow("midday") | volatile	synonym for noon
+mn	=isnow("mn") | volatile	abbreviation for midnight
+md	=isnow("md") | volatile	abbreviation for midday
+n	=isnow("n") | volatile	unique prefix of the three time words: noon
 --- STRUCTURE: THE SHORTHAND LADDER (short pattern -> canonical form) ---
-6	=isnow("6") | volatile()	bare hour: 06:00:00 daily
-/1 18	=isnow("/1 18") | volatile()	the 1st of any month at 18:00
-Su :0,30	=isnow("Su :0,30") | volatile()	Sundays at :00 and :30 of every hour
-12/-1 0	=isnow("12/-1 0") | volatile()	last day of December at 00:00
-2000// ::0+[5]	=isnow("2000// ::0+[5]") | volatile()	year 2000, every 5th second
-*	=isnow("*") | volatile()	the bare star: every minute
-12/25	=isnow("12/25") | volatile()	December 25, every minute that day
-:0,30	=isnow(":0,30") | volatile()	minute set :00 and :30 — hour left wild
-2026//	=isnow("2026//") | volatile()	any instant in the year 2026
-7/14	=isnow("7/14") | volatile()	one slash = month/day: July 14
-2 :30	=isnow("2 :30") | volatile()	a bare number fills the empty hour slot: 02:30
-M.noon	=isnow("M.noon") | volatile()	"." is a group separator: same as "M noon"
-M_noon	=isnow("M_noon") | volatile()	"_" is a group separator too
-" 6 "	=isnow(" 6 ") | volatile()	surrounding separators tolerated (a pattern is one shell-safe token)
-M,W,F noon	=isnow("M,W,F noon") | volatile()	weekday set Mon/Wed/Fri, at noon
-*/*/15 4 12:00	=isnow("*/*/15 4 12:00") | volatile()	day 15 AND weekday 4 (Wed) — fields AND together
-*/*/15 5 12:00	=isnow("*/*/15 5 12:00") | volatile()	day 15 AND weekday 5 (Thu) — both must hold
-*/*/* 2-6 12:00	=isnow("*/*/* 2-6 12:00") | volatile()	numeric weekday span Mon–Fri, at 12:00
-*/*/* 2+[1] 12:00	=isnow("*/*/* 2+[1] 12:00") | volatile()	numeric-weekday step: 1st Monday, at 12:00
+6	=isnow("6") | volatile	bare hour: 06:00:00 daily
+/1 18	=isnow("/1 18") | volatile	the 1st of any month at 18:00
+Su :0,30	=isnow("Su :0,30") | volatile	Sundays at :00 and :30 of every hour
+12/-1 0	=isnow("12/-1 0") | volatile	last day of December at 00:00
+2000// ::0+[5]	=isnow("2000// ::0+[5]") | volatile	year 2000, every 5th second
+*	=isnow("*") | volatile	the bare star: every minute
+12/25	=isnow("12/25") | volatile	December 25, every minute that day
+:0,30	=isnow(":0,30") | volatile	minute set :00 and :30 — hour left wild
+2026//	=isnow("2026//") | volatile	any instant in the year 2026
+7/14	=isnow("7/14") | volatile	one slash = month/day: July 14
+2 :30	=isnow("2 :30") | volatile	a bare number fills the empty hour slot: 02:30
+M.noon	=isnow("M.noon") | volatile	"." is a group separator: same as "M noon"
+M_noon	=isnow("M_noon") | volatile	"_" is a group separator too
+" 6 "	=isnow(" 6 ") | volatile	surrounding separators tolerated (a pattern is one shell-safe token)
+M,W,F noon	=isnow("M,W,F noon") | volatile	weekday set Mon/Wed/Fri, at noon
+*/*/15 4 12:00	=isnow("*/*/15 4 12:00") | volatile	day 15 AND weekday 4 (Wed) — fields AND together
+*/*/15 5 12:00	=isnow("*/*/15 5 12:00") | volatile	day 15 AND weekday 5 (Thu) — both must hold
+*/*/* 2-6 12:00	=isnow("*/*/* 2-6 12:00") | volatile	numeric weekday span Mon–Fri, at 12:00
+*/*/* 2+[1] 12:00	=isnow("*/*/* 2+[1] 12:00") | volatile	numeric-weekday step: 1st Monday, at 12:00
 --- FIELD ALGEBRA: WILDCARD, EXACT, SET, EXCLUSION, SPAN, FROM-END, STEP ---
-*/*/* * *:00:00	=isnow("*/*/* * *:00:00") | volatile()	wildcard hour: every hour, on the hour
-2026// *:*:00	=isnow("2026// *:*:00") | volatile()	exact year 2026, every minute
-/1,4,7,10/ *:*:00	=isnow("/1,4,7,10/ *:*:00") | volatile()	month set Jan/Apr/Jul/Oct, every minute
-:00,15,30,45	=isnow(":00,15,30,45") | volatile()	minute set: every quarter hour
-/!1 *:*:00	=isnow("/!1 *:*:00") | volatile()	field exclusion: every day except the 1st
-8-12	=isnow("8-12") | volatile()	hour span 08–12 inclusive, on the hour
-M-F noon	=isnow("M-F noon") | volatile()	weekday span Monday–Friday, at noon
-22-2	=isnow("22-2") | volatile()	hour span that wraps midnight: 22:00–02:00
-*/*/29-* *:*:00	=isnow("*/*/29-* *:*:00") | volatile()	day span open at the top: the 29th onward
-*/*/-1 *:*:00	=isnow("*/*/-1 *:*:00") | volatile()	from-end: the last day of the month
-*/12/-15 *:*:00	=isnow("*/12/-15 *:*:00") | volatile()	the last 15 days of December
-*/12/-2w1d *:*:00	=isnow("*/12/-2w1d *:*:00") | volatile()	from-end unit compound: last 2 weeks 1 day of December
-:0+[15]	=isnow(":0+[15]") | volatile()	step: every 15 minutes from :00
-::+[9]	=isnow("::+[9]") | volatile()	step: every 9 seconds
-:-[15]	=isnow(":-[15]") | volatile()	descending minute step counted from the end: :59, :44, :29, :14
-Monday+[3] noon	=isnow("Monday+[3] noon") | volatile()	the 3rd Monday of the month, at noon
-11/ Th-[1] noon	=isnow("11/ Th-[1] noon") | volatile()	the last Thursday of November, at noon
-M+[1,3] noon	=isnow("M+[1,3] noon") | volatile()	the 1st and 3rd Monday, at noon
-/+[3w] noon	=isnow("/+[3w] noon") | volatile()	week-granular: every 3rd week of the year, at noon
-M+[1],W+[2] noon	=isnow("M+[1],W+[2] noon") | volatile()	set distributes the step: 1st Monday and 2nd Wednesday, at noon
-M-F-[1] noon	=isnow("M-F-[1] noon") | volatile()	weekday-span BYSETPOS: last business day of the month, at noon
-M-F+[1] noon	=isnow("M-F+[1] noon") | volatile()	first business day of the month, at noon
+*/*/* * *:00:00	=isnow("*/*/* * *:00:00") | volatile	wildcard hour: every hour, on the hour
+2026// *:*:00	=isnow("2026// *:*:00") | volatile	exact year 2026, every minute
+/1,4,7,10/ *:*:00	=isnow("/1,4,7,10/ *:*:00") | volatile	month set Jan/Apr/Jul/Oct, every minute
+:00,15,30,45	=isnow(":00,15,30,45") | volatile	minute set: every quarter hour
+/!1 *:*:00	=isnow("/!1 *:*:00") | volatile	field exclusion: every day except the 1st
+8-12	=isnow("8-12") | volatile	hour span 08–12 inclusive, on the hour
+M-F noon	=isnow("M-F noon") | volatile	weekday span Monday–Friday, at noon
+22-2	=isnow("22-2") | volatile	hour span that wraps midnight: 22:00–02:00
+*/*/29-* *:*:00	=isnow("*/*/29-* *:*:00") | volatile	day span open at the top: the 29th onward
+*/*/-1 *:*:00	=isnow("*/*/-1 *:*:00") | volatile	from-end: the last day of the month
+*/12/-15 *:*:00	=isnow("*/12/-15 *:*:00") | volatile	the last 15 days of December
+*/12/-2w1d *:*:00	=isnow("*/12/-2w1d *:*:00") | volatile	from-end unit compound: last 2 weeks 1 day of December
+:0+[15]	=isnow(":0+[15]") | volatile	step: every 15 minutes from :00
+::+[9]	=isnow("::+[9]") | volatile	step: every 9 seconds
+:-[15]	=isnow(":-[15]") | volatile	descending minute step counted from the end: :59, :44, :29, :14
+Monday+[3] noon	=isnow("Monday+[3] noon") | volatile	the 3rd Monday of the month, at noon
+11/ Th-[1] noon	=isnow("11/ Th-[1] noon") | volatile	the last Thursday of November, at noon
+M+[1,3] noon	=isnow("M+[1,3] noon") | volatile	the 1st and 3rd Monday, at noon
+/+[3w] noon	=isnow("/+[3w] noon") | volatile	week-granular: every 3rd week of the year, at noon
+M+[1],W+[2] noon	=isnow("M+[1],W+[2] noon") | volatile	set distributes the step: 1st Monday and 2nd Wednesday, at noon
+M-F-[1] noon	=isnow("M-F-[1] noon") | volatile	weekday-span BYSETPOS: last business day of the month, at noon
+M-F+[1] noon	=isnow("M-F+[1] noon") | volatile	first business day of the month, at noon
 --- INTERVALS: "EVERY N UNITS", CROSSING FIELD BOUNDARIES ---
-+[90mn]	=isnow("+[90mn]") | volatile()	every 90 minutes (re-aligns at the day boundary)
-+[2h]	=isnow("+[2h]") | volatile()	every 2 hours
-+[3d]	=isnow("+[3d]") | volatile()	every 3 days (week-anchored)
-+[25h]	=isnow("+[25h]") | volatile()	every 25 hours (walks across the week)
-+[10d]	=isnow("+[10d]") | volatile()	every 10 days within the month
-+[40d]	=isnow("+[40d]") | volatile()	every 40 days within the year
-+[30s]	=isnow("+[30s]") | volatile()	every 30 seconds
-M-F +[90mn] >=6 <=18	=isnow("M-F +[90mn] >=6 <=18") | volatile()	every 90 min, weekdays only, 06:00–18:00 (interval ANDed with weekday + bounds)
++[90mn]	=isnow("+[90mn]") | volatile	every 90 minutes (re-aligns at the day boundary)
++[2h]	=isnow("+[2h]") | volatile	every 2 hours
++[3d]	=isnow("+[3d]") | volatile	every 3 days (week-anchored)
++[25h]	=isnow("+[25h]") | volatile	every 25 hours (walks across the week)
++[10d]	=isnow("+[10d]") | volatile	every 10 days within the month
++[40d]	=isnow("+[40d]") | volatile	every 40 days within the year
++[30s]	=isnow("+[30s]") | volatile	every 30 seconds
+M-F +[90mn] >=6 <=18	=isnow("M-F +[90mn] >=6 <=18") | volatile	every 90 min, weekdays only, 06:00–18:00 (interval ANDed with weekday + bounds)
 --- PATTERN-LEVEL EXCLUSIONS: "! spec" CARVES INSTANTS OUT ---
-M-F ! 12/25	=isnow("M-F ! 12/25") | volatile()	every weekday except December 25
-noon ! 12/25 ! 1/1	=isnow("noon ! 12/25 ! 1/1") | volatile()	noon daily, except Christmas and New Year's (a holiday list)
-noon ! 12/25	=isnow("noon ! 12/25") | volatile()	noon daily, except December 25
-M-F !12/25	=isnow("M-F !12/25") | volatile()	no space: "!12/25" binds as a field exclusion, NOT a whole-day skip
+M-F ! 12/25	=isnow("M-F ! 12/25") | volatile	every weekday except December 25
+noon ! 12/25 ! 1/1	=isnow("noon ! 12/25 ! 1/1") | volatile	noon daily, except Christmas and New Year's (a holiday list)
+noon ! 12/25	=isnow("noon ! 12/25") | volatile	noon daily, except December 25
+M-F !12/25	=isnow("M-F !12/25") | volatile	no space: "!12/25" binds as a field exclusion, NOT a whole-day skip
 --- BOUNDS & WINDOWS: SINCE (>, >=) / UNTIL (<, <=) ---
-12 >=2011	=isnow("12 >=2011") | volatile()	hour 12, only from year 2011 onward
-12 <9/1	=isnow("12 <9/1") | volatile()	hour 12 daily, until September 1 (exclusive)
-::+[9] >=6 <=18	=isnow("::+[9] >=6 <=18") | volatile()	every 9 seconds, within the 06:00–18:00 window
-12 >=2011 <2016	=isnow("12 >=2011 <2016") | volatile()	hour 12, bounded to years 2011–2015
-::+[7] >=6 <=7	=isnow("::+[7] >=6 <=7") | volatile()	continuous stepping: every 7 seconds in 06:00–07:00, restarting each day
+12 >=2011	=isnow("12 >=2011") | volatile	hour 12, only from year 2011 onward
+12 <9/1	=isnow("12 <9/1") | volatile	hour 12 daily, until September 1 (exclusive)
+::+[9] >=6 <=18	=isnow("::+[9] >=6 <=18") | volatile	every 9 seconds, within the 06:00–18:00 window
+12 >=2011 <2016	=isnow("12 >=2011 <2016") | volatile	hour 12, bounded to years 2011–2015
+::+[7] >=6 <=7	=isnow("::+[7] >=6 <=7") | volatile	continuous stepping: every 7 seconds in 06:00–07:00, restarting each day
