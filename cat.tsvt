@@ -3,6 +3,6 @@
 # flips; the bare `| volatile` stage marks the cell live, so `tsv serve` (or the
 # playground) redraws it on the clock. Run `tsv serve cat.tsvt` and watch it blink.
    /\_/\
-=concat("  ( ", if(isnow("::+[4]"), "-   -", "◉   ◉"), " )") | volatile
+=concat("  ( ", if(isnow("::+[4]"), "-   -", "o   o"), " )") | volatile
    )  ^  (
-=if(isnow("::+[4]"), "  ( =^..^= ) ~ *blink*", "  ( =^..^= ) ~ meow") | volatile
+=if(isnow("::+[4]"), "  ( =^..^= ) ~ *blink*", "  ( =^..^= ) ~ *purrs*") | volatile
