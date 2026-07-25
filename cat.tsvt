@@ -2,7 +2,7 @@
 # seconds: isnow("::+[4]") holds on seconds divisible by 4, so the eye glyph
 # flips; the bare `| volatile` stage marks the cell live, so `tsv serve` (or the
 # playground) redraws it on the clock. Run `tsv serve cat.tsvt` and watch it blink.
-   /\_/\
+    /\_/\
 =concat("  ( ", if(isnow("::+[4]"), "-   -", "o   o"), " )") | volatile
    )  ^  (
 =if(isnow("::+[4]"), "  ( =^..^= ) ~ *blink*", "  ( =^..^= ) ~ *purrs*") | volatile
