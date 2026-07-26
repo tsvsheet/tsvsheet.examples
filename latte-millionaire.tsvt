@@ -1,4 +1,4 @@
-# The latte factor: skip the coffee, invest the difference, feel nothing, gain everything.
+#.The latte factor: skip the coffee, invest the difference, feel nothing, gain everything.
 Latte price ($)	6.50
 Lattes per week	5
 Monthly spend ($)	=round(B1*B2*52/12, 2)

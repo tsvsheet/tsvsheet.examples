@@ -1,4 +1,4 @@
-# Link & contact audit — URLs and addresses parsed by plain formulas: hosts, paths, query params, validity.
+#.Link & contact audit — URLs and addresses parsed by plain formulas: hosts, paths, query params, validity.
 URL	Host	Path	utm_source
 https://tsvsheet.com/functions/?utm_source=readme#crypto	=urlhost(A2)	=urlpath(A2)	=urlquery(A2, "utm_source")
 https://github.com/tsvsheet/tsvsheet.examples?utm_source=site	=urlhost(A3)	=urlpath(A3)	=urlquery(A3, "utm_source")

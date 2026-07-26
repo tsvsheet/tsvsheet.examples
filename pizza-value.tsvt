@@ -1,4 +1,4 @@
-# Pizza economics: area grows with the square of the diameter, price does not.
+#.Pizza economics: area grows with the square of the diameter, price does not.
 Pizza	Diameter (in)	Price ($)	Area (sq in)	Sq in per $
 Small	10	8.00	=round(pi()*(B2/2)^2, 1)	=round(D2/C2, 2)
 Medium	12	11.00	=round(pi()*(B3/2)^2, 1)	=round(D3/C3, 2)

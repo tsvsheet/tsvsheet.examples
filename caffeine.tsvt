@@ -1,5 +1,5 @@
-# Caffeine decay — every formula here uses the pipe operator: x | f(a) ≡ f(x, a).
-# A dose fades by half every ~5 hours; sleep science says be under 50 mg by bedtime.
+#.Caffeine decay — every formula here uses the pipe operator: x | f(a) ≡ f(x, a).
+#.A dose fades by half every ~5 hours; sleep science says be under 50 mg by bedtime.
 Dose (mg)	200	a double espresso
 Half-life (hr)	5
 Bedtime-safe under (mg)	50

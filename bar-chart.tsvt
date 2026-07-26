@@ -1,4 +1,4 @@
-# bar-chart.tsvt — a chart as a spreadsheet-function: 4 (label, value) pairs in, one SVG string out.
+#.bar-chart.tsvt — a chart as a spreadsheet-function: 4 (label, value) pairs in, one SVG string out.
 label	value	h	svg fragment
 =input(1)	=input(2)	=round(B2/max($B$2:$B$5)*100, 0)	=concat("<rect x='20' y='", 120-C2, "' width='60' height='", C2, "' fill='#4C78A8'/><text x='50' y='135' text-anchor='middle' font-size='11'>", A2, "</text><text x='50' y='", 114-C2, "' text-anchor='middle' font-size='10' fill='#555'>", B2, "</text>")
 =input(3)	=input(4)	=round(B3/max($B$2:$B$5)*100, 0)	=concat("<rect x='95' y='", 120-C3, "' width='60' height='", C3, "' fill='#4C78A8'/><text x='125' y='135' text-anchor='middle' font-size='11'>", A3, "</text><text x='125' y='", 114-C3, "' text-anchor='middle' font-size='10' fill='#555'>", B3, "</text>")
