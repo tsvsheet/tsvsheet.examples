@@ -1,3 +1,4 @@
+#.header	rows(count(1))
 Student	Math	Reading	Science	Average	Result
 Alice	85	90	78	=round(avg(B2:D2), 1)	=if(E2 >= 70, "Pass", "Fail")
 Bob	72	68	80	=round(avg(B3:D3), 1)	=if(E3 >= 70, "Pass", "Fail")

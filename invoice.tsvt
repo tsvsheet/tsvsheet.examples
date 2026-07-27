@@ -1,3 +1,5 @@
+#.header	rows(count(1))
+#.freeze	rows(count(1), count(-1))
 Item	Qty	Price	Amount
 Widget	3	4.50	=B2*C2
 Gadget	2	12.00	=B3*C3

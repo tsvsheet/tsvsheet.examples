@@ -1,0 +1,15 @@
+#.view-directives.tsvt — what a viewport does with this grid, declared in the file itself.
+#.header names the rows that label the data. freeze pins them, and the totals row at
+#.the bottom, while the middle scrolls. hide keeps the scratch column out of sight
+#.without taking it out of the sheet: `tsv render` still prints it, and only
+#.`tsv render --hidden=drop` leaves it out. Delete all four #. lines and the numbers
+#.are identical — a directive is a projection of the grid, never an input to it.
+#.header	rows(count(1))
+#.freeze	rows(count(1), count(-1))
+#.hide	cols(range(D:D))
+Region	Units	Revenue	Unit price (scratch)
+North	120	=B2*D2	4.25
+South	80	=B3*D3	4.25
+East	95	=B4*D4	4.25
+West	140	=B5*D5	4.25
+Total	=sum(B2:B5)	=sum(C2:C5)	
